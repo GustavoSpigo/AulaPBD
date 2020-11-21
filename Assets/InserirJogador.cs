@@ -14,6 +14,9 @@ public class InserirJogador : MonoBehaviour
     public Text msgErro;
     public void Inserir()
     {
+        msgErro.color = Color.red;
+        msgErro.text = "";
+
         if (ValidacaoLocal())
         {
             StartCoroutine(VerificaSeExisteNick());
@@ -41,7 +44,7 @@ public class InserirJogador : MonoBehaviour
                 }
                 else
                 {
-                    //deu erro
+                    msgErro.text = w.downloadHandler.text;
                 }
 
             }
@@ -67,13 +70,14 @@ public class InserirJogador : MonoBehaviour
             {
                 if(w.downloadHandler.text.Equals("Insert deu bom"))
                 {
-                    //Foi inserido
+                    msgErro.color = Color.green;
+                    msgErro.text = "Cadastrado com sucesso";
                 }
                 else
                 {
-                    //deu erro
+                    msgErro.color = Color.red;
+                    msgErro.text = "Problema ao cadastrar";
                 }
-                
             }
         }
     }
