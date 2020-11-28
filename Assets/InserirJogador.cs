@@ -29,7 +29,7 @@ public class InserirJogador : MonoBehaviour
         wwwf.AddField("nick", inputNick.text);
         wwwf.AddField("email", inputEmail.text);
 
-        using (var w = UnityWebRequest.Post("http://localhost/jogos/verificaNickEmail.php", wwwf))
+        using (var w = UnityWebRequest.Post(Config.EnderecoServer + "verificaNickEmail.php", wwwf))
         {
             yield return w.SendWebRequest();
             if (w.isNetworkError || w.isHttpError)
@@ -58,7 +58,7 @@ public class InserirJogador : MonoBehaviour
         wwwf.AddField("senha", MD5.Md5Sum(inputSenha.text));
         wwwf.AddField("genero", inputGenero.options[inputGenero.value].text);
 
-        using (var w = UnityWebRequest.Post("http://localhost/jogos/inserirJogador.php", wwwf))
+        using (var w = UnityWebRequest.Post(Config.EnderecoServer + "inserirJogador.php", wwwf))
         {
             yield return w.SendWebRequest();
 

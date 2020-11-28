@@ -48,7 +48,7 @@ public class GetPHP : MonoBehaviour
         wwwf.AddField("nick", inputNick.text);
         //wwwf.AddField("pass", MD5.Md5Sum(inputSenha.text));
 
-        using (var w = UnityWebRequest.Post("http://localhost/jogos/listaJogador.php", wwwf))
+        using (var w = UnityWebRequest.Post(Config.EnderecoServer + "listaJogador.php", wwwf))
         {
             yield return w.SendWebRequest();
             
